@@ -16,6 +16,7 @@ return array(
     'view_manager' => array(
         'template_map' => array(
         'zf/app/app' => __DIR__ . '/../view/app.phtml',
+        'partial/menu' => __DIR__ . '/../view/partials/menu.phtml',
         )
     ),
 
@@ -26,6 +27,7 @@ return array(
             'ZF\Apigility\Admin\Model\ValidatorMetadataModel' => 'ZF\Apigility\Admin\Model\ValidatorMetadataModelFactory',
             'ZF\Apigility\Admin\Model\ValidatorsModel' => 'ZF\Apigility\Admin\Model\ValidatorsModelFactory',
             'ZF\Apigility\Admin\Model\InputFilterModel' => 'ZF\Apigility\Admin\Model\InputFilterModelFactory',
+            'ag-sidenav' => 'ZF\Apigility\Admin\Navigation\Service\SideNavigationFactory',
         ),
     ),
 
@@ -1030,4 +1032,27 @@ return array(
             'input_filter' => 'ZF\Apigility\Admin\ModuleName\Validator',
         ),
     ),
+
+    'navigation' => array(
+        'ag-sidenav' => array(
+            array(
+                'type' => 'ZF\Apigility\Admin\Navigation\Page',
+                'label' => 'General Information',
+                'uri' => 'global/information',
+                'section' => 'general-information',
+            ),
+            array(
+                'type' => 'ZF\Apigility\Admin\Navigation\Page',
+                'label' => 'Database Adapters',
+                'uri' => 'global/db-adapters',
+                'section' => 'db-adapters',
+            ),
+            array(
+                'type' => 'ZF\Apigility\Admin\Navigation\Page',
+                'label' => 'Authentication',
+                'uri' => 'global/authentication',
+                'section' => 'authentication',
+            ),
+        ),
+     ),
 );

@@ -85,11 +85,7 @@
             <div class="col-md-3">
                 <aside class="ag-sidebar" role="complementary">
                     <div ng-show="!$root.routeParams.apiName">
-                        <ul class="nav ag-sidenav">
-                            <li ng-class="{active: ($root.routeParams.section == 'general-information')}"><a ng-href="admin#/global/information">General Information</a></li>
-                            <li ng-class="{active: ($root.routeParams.section == 'db-adapters')}"><a ng-href="admin#/global/db-adapters">Database Adapters</a></li>
-                            <li ng-class="{active: ($root.routeParams.section == 'authentication')}"><a ng-href="admin#/global/authentication">Authentication</a></li>
-                        </ul>
+                        <?php echo $this->navigation('ag-sidenav')->menu()->setPartial('partial/menu'); ?>
                     </div>
                     <div ng-show="$root.routeParams.apiName">
                         <ul class="nav ag-sidenav">

@@ -1,0 +1,5 @@
+<ul class="nav ag-sidenav" >
+<?php foreach ($this->container as $page): ?>
+	<li ng-class="{active: ($root.routeParams.section == '<?= $page->getSection() ?>')}"><a ng-href="admin#/<?= $page->getHref() ?>"><?= $page->getLabel() ?></a></li>
+<?php endforeach; ?>
+</ul>
