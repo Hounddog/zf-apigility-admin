@@ -2378,6 +2378,29 @@ angular.module("html/index.html", []).run(["$templateCache", function($templateC
     "            </ul>\n" +
     "        </div>\n" +
     "    </div>\n" +
+    "\n" +
+    "    <div class=\"col-md-6\">\n" +
+    "        <div class=\"panel panel-info\">\n" +
+    "            <div class=\"panel-heading\">\n" +
+    "                <h4 class=\"panel-title\">\n" +
+    "                    <i class=\"glyphicon glyphicon-book\"></i>\n" +
+    "                    <a ui-sref=\"ag.settings.doctrine-adapters\">Doctrine Adapters</a>\n" +
+    "                </h4>\n" +
+    "            </div>\n" +
+    "\n" +
+    "            <div class=\"panel-body\" ng-show=\"!dashboard.doctrineAdapters.length\">\n" +
+    "                <p class=\"text-warning\">\n" +
+    "                    Doctrine not installed\n" +
+    "                </p>\n" +
+    "            </div>\n" +
+    "\n" +
+    "            <ul class=\"list-group\">\n" +
+    "                <li ng-repeat=\"adapter in dashboard.doctrineAdapters\" class=\"list-group-item\">\n" +
+    "                    <a ui-sref=\"ag.settings.doctrine-adapters({adapter: adapter.adapter_name})\">{{ adapter.adapter_name }}</a>\n" +
+    "                </li>\n" +
+    "            </ul>\n" +
+    "        </div>\n" +
+    "    </div>\n" +
     "</div>\n" +
     "");
 }]);
