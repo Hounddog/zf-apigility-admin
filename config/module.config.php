@@ -8,7 +8,7 @@ return array(
     'asset_manager' => array(
         'resolver_configs' => array(
             'paths' => array(
-                __DIR__ . '/../asset/dist',
+                __DIR__ . '/../asset/src',
             ),
         ),
     ),
@@ -603,7 +603,7 @@ return array(
                 'hydrator'        => 'ArraySerializable',
                 'route_identifier_name' => 'adapter_name',
                 'entity_identifier_name' => 'adapter_name',
-                'route_name'      => 'zf-apigility-admin/api/doctrine-adapter',
+                'route_name'      => 'zf-apigility/api/doctrine-adapter',
             ),
             'ZF\Apigility\Admin\Model\InputFilterCollection' => array(
                 'route_name'      => 'zf-apigility/api/module/rest-service/input-filter',
@@ -721,10 +721,10 @@ return array(
         ),
         'ZF\Apigility\Admin\Controller\DoctrineAdapter' => array(
             'listener'                => 'ZF\Apigility\Admin\Model\DoctrineAdapterResource',
-            'route_name'              => 'zf-apigility-admin/api/doctrine-adapter',
+            'route_name'              => 'zf-apigility/api/doctrine-adapter',
             'route_identifier_name'   => 'adapter_name',
             'entity_class'            => 'ZF\Apigility\Admin\Model\DoctrineAdapterEntity',
-            'resource_http_methods'   => array('GET', 'PATCH', 'DELETE'),
+            'entity_http_methods'   => array('GET', 'PATCH', 'DELETE'),
             'collection_http_methods' => array('GET'),
             'collection_name'         => 'doctrine_adapter',
         ),

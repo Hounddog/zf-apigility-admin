@@ -233,6 +233,23 @@
           }
         }
       });
+      $stateProvider.state('ag.settings.doctrine-adapters', {
+        url: '/doctrine-adapters?adapter&edit',
+        data: {
+          pageTitle: 'Doctrine Adapters'
+        },
+        resolve: {
+          doctrineAdapters: ['DoctrineAdapterResource', function (DoctrineAdapterResource) {
+            return DoctrineAdapterResource.getList();
+          }]
+        },
+        views: {
+          'content@': {
+            templateUrl: 'html/settings/doctrine-adapters/index.html',
+            controller: 'DoctrineAdapterController'
+          }
+        }
+      });
 
       $stateProvider.state('ag.api', {
         url: '/api',

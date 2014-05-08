@@ -57,7 +57,6 @@
     <div class="container">
         <div class="row">
             <aside ui-view="sidebar" class="col-md-3 ag-sidebar" role="complementary"></aside>
-                    <li ng-class="{active: ($root.navSection == 'DoctrineAdapterController')}"><a ng-href="/admin#/global/doctrine-adapters">Doctrine Adapters</a></li>
 
             <main ui-view="content" class="ag col-md-9" role="main"></main>
         </div>
@@ -80,7 +79,7 @@
     <div ng-controller="agFsPermsModal"></div>
 
     <!-- build:js js/vendor-ui.js -->
-    <script src="vendor/jquery/dist/jquery.js"></script>
+    <script src="vendor/jquery/jquery.js"></script>
     <script src="vendor/jquery-ui/ui/jquery-ui.js"></script>
     <script src="vendor/select2/select2.js"></script>
     <!-- endbuild -->
@@ -117,6 +116,7 @@
     <script src="js/controllers/content-negotiation.js"></script>
     <script src="js/controllers/dashboard.js"></script>
     <script src="js/controllers/db-adapter.js"></script>
+    <script src="js/controllers/doctrine-adapter.js"></script>
     <script src="js/controllers/settings-dashboard.js"></script>
     <script src="js/directives/ag-cancel-edit.js"></script>
     <script src="js/directives/ag-collapse.js"></script>
