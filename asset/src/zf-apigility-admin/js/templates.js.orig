@@ -1196,6 +1196,7 @@ angular.module("html/api/rest-services/new.html", []).run(["$templateCache", fun
     "                    <div class=\"clearfix\"></div>\n" +
     "                </form>\n" +
     "            </div></div></ag-tab-pane>\n" +
+<<<<<<< Updated upstream
     "\n" +
     "            <ag-tab-pane title=\"Doctrine-Connected\"><div class=\"panel\"><div class=\"panel-body\">\n" +
     "                <div class=\"panel panel-warning\" ng-show=\"doctrineAdapters.length < 1\">\n" +
@@ -1249,6 +1250,10 @@ angular.module("html/api/rest-services/new.html", []).run(["$templateCache", fun
     "                    <div class=\"clearfix\"></div>\n" +
     "                </form>\n" +
     "            </div></div></ag-tab-pane>\n" +
+=======
+    "                    ng-submit=\"newService.createNewDoctrineConnectedService()\">\n" +
+    "                    ag-form>\n" +
+>>>>>>> Stashed changes
     "        </ag-tabs>\n" +
     "    </div>\n" +
     "</div>\n" +

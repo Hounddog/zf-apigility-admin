@@ -82,6 +82,20 @@
         </collapse-body>
     </ag-collapse>
 
+    <ag-collapse class="panel-success" show="isDoctrineConnected(restService)">
+        <collapse-header>
+            <h4 class="panel-title">Doctrine Settings</h4>
+        </collapse-header>
+
+        <collapse-body class="list-group">
+            <div class="form-group list-group-item">
+                <label class="control-label" for="object_manager">Object Manager</label>
+                <label class="control-label">Object Manager</label>
+                <input class="form-control input-xlarge" type="text" ng-model="restService.object_manager" required="" placeholder="doctrine.entitymanager.orm_default">
+            </div>
+        </collapse-body>
+    </ag-collapse>
+
     <ag-collapse class="panel-success">
         <collapse-header>
             <h4 class="panel-title">REST Parameters</h4>

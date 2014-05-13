@@ -353,6 +353,9 @@
           dbAdapters: ['DbAdapterResource', function (DbAdapterResource) {
             return DbAdapterResource.getList();
           }],
+          doctrineAdapters: ['DbAdapterResource', function (DoctrineAdapterResource) {
+            return DoctrineAdapterResource.getList();
+          }],
           hydrators: ['HydratorServicesRepository', function (HydratorServicesRepository) {
             return HydratorServicesRepository.getList();
           }]

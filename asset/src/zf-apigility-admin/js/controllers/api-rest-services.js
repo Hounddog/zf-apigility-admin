@@ -3,7 +3,7 @@
 
 angular.module('ag-admin').controller(
   'ApiRestServicesController', 
-  function ($scope, $state, $stateParams, $sce, $modal, $timeout, flash, filters, hydrators, validators, selectors, ApiRepository, api, dbAdapters, toggleSelection, agFormHandler) {
+  function ($scope, $state, $stateParams, $sce, $modal, $timeout, flash, filters, hydrators, validators, selectors, ApiRepository, api, dbAdapters, doctrineAdapters, toggleSelection, agFormHandler) {
 
     $scope.activeService     = $stateParams.service ? $stateParams.service : '';
     $scope.inEdit            = !!$stateParams.edit;
@@ -13,6 +13,7 @@ angular.module('ag-admin').controller(
     $scope.api               = api;
     $scope.version           = $stateParams.version;
     $scope.dbAdapters        = dbAdapters;
+    $scope.doctrineAdapters  = doctrineAdapters;
     $scope.filterOptions     = filters;
     $scope.hydrators         = hydrators;
     $scope.validatorOptions  = validators;
@@ -23,7 +24,11 @@ angular.module('ag-admin').controller(
     $scope.newService        = {
         restServiceName: '',
         dbAdapterName:   '',
-        dbTableName:     ''
+        dbTableName:     '',
+        doctrineObjectManager: '',
+        doctrineHydrator: '',
+        doctrineResourceName: '',
+        doctrineEntityClass: '',
     };
 
     $scope.resetForm = function () {
@@ -32,6 +37,10 @@ angular.module('ag-admin').controller(
         $scope.newService.restServiceName = '';
         $scope.newService.dbAdapterName   = '';
         $scope.newService.dbTableName     = '';
+        $scope.newService.doctrineObjectManager   = '';
+        $scope.newService.doctrineHydrator        = '',
+        $scope.newService.doctrineResourceName    = '';
+        $scope.newService.doctrineEntityClass     = '';
     };
 
     $scope.isLatestVersion = function () {
@@ -53,6 +62,16 @@ angular.module('ag-admin').controller(
             return false;
         }
         if (restService.hasOwnProperty('adapter_name') || restService.hasOwnProperty('table_name') || restService.hasOwnProperty('table_service')) {
+            return true;
+        }
+        return false;
+    };
+
+    $scope.isDoctrineConnected = function (restService) {
+        if (typeof restService !== 'object' || typeof restService === 'undefined') {
+            return false;
+        }
+        if (restService.hasOwnProperty('object_manager') || restService.hasOwnProperty('entity_class') ) {
             return true;
         }
         return false;
@@ -94,9 +113,35 @@ angular.module('ag-admin').controller(
         );
     };
 
+    $scope.newService.createNewDoctrineConnectedService = function () {
+        
+        ApiRepository.createNewDoctrineConnectedService(
+            $scope.api.name, 
+            $scope.newService.doctrineResourceName, 
+            $scope.newService.doctrineEntityClass, 
+            $scope.newService.doctrineObjectManager, 
+            $scope.newService.doctrineHydrator
+        ).then(
+            function (restResource) {
+                flash.success = 'New Doctrine-Connected REST service created; please wait for the list to refresh';
+                $scope.resetForm();
+                ApiRepository.refreshApi($scope, true, 'Finished reloading REST service list').then(function () {
+                    return $timeout(function () {
+                        $state.go('.', { service: newServiceName, view: 'settings' }, { reload: true });
+                    }, 100);
+                });
+            },
+            function (error) {
+                agFormHandler.reportError(error, $scope);
+            }
+        );
+    };
+
     $scope.saveRestService = function (index) {
         var restServiceData = _.clone($scope.api.restServices[index]);
-        ApiRepository.saveRestService($scope.api.name, restServiceData).then(
+        var doctrineConnected = $scope.isDoctrineConnected(restServiceData)
+
+        ApiRepository.saveRestService($scope.api.name, restServiceData, doctrineConnected).then(
             function (data) {
                 agFormHandler.resetForm($scope);
                 flash.success = 'REST Service updated';

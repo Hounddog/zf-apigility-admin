@@ -222,6 +222,7 @@ angular.module('ag-admin').factory('ApiRepository', function ($q, $http, apiBase
                 });
         },
 
+<<<<<<< Updated upstream
         createNewDoctrineConnectedService: function(apiName, doctrineResourceName, doctrineEntityClass, doctrineObjectManager, doctrineHydrator) {
             return $http.post(moduleApiPath + '/' + apiName + '/doctrine',
                 {resourceName: doctrineResourceName, entityClass: doctrineEntityClass, objectManager: doctrineObjectManager, hydratorName: doctrineHydrator})
@@ -230,6 +231,10 @@ angular.module('ag-admin').factory('ApiRepository', function ($q, $http, apiBase
                 });
         },
 
+=======
+            return $http.post(moduleApiPath + '/' + apiName + '/doctrine',
+                {service_name: doctrineResourceName, resourceName: doctrineResourceName, entityClass: doctrineEntityClass, objectManager: doctrineObjectManager, hydratorName: doctrineHydrator})
+>>>>>>> Stashed changes
         createNewRpcService: function (apiName, rpcServiceName, rpcServiceRoute) {
             return $http.post(moduleApiPath + '/' + apiName + '/rpc', {service_name: rpcServiceName, route_match: rpcServiceRoute})
                 .then(function (response) {
